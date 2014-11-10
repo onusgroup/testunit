@@ -12,6 +12,10 @@ namespace Test
         {
             var result = Program.consulta("pato");
             Assert.IsTrue(result);
+
+            //Error en la prueba ya que no existe el nombre indicado
+            var result2 = Program.consulta("marijuana");
+            Assert.IsTrue(result2);
         }
 
     }
