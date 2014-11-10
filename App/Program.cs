@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App
 {
-    public class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
@@ -15,24 +15,33 @@ namespace App
             int res2 = op.Restar(100, 30);
 
             Console.WriteLine("Suma: {0} - Resta: {1}",res, res2);
-            consulta();
+
+            consulta("pato");
             Console.ReadKey();
 
 
         }
 
-        public static void consulta()
+        public static bool consulta(string nombre)
         {
+            bool result = false;
+
             var query = from v in Ventas.getListaVentas()
                         join p in Productos.getListaProductos() on v.id equals p.idVentas
-                        where v.cliente == "pato"
+                        where v.cliente == nombre
                         select p.grupo;
 
             foreach (var item in query)
             {
                 Console.WriteLine("Artistas Comprados por Pato: {0}", item);
+                if (item.Length > 0)
+                {
+                    result = true;
+                }
             }
 
+            return result;
+ 
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using App;
 
 namespace Test
 {
@@ -7,8 +8,10 @@ namespace Test
     public class UnitTest2
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Consulta_PasandoNombre_RetornandoBoleano()
         {
+            var result = Program.consulta("pato");
+            Assert.IsTrue(result);
         }
     }
 }
